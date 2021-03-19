@@ -9,13 +9,18 @@
 [![npm dw](https://img.shields.io/npm/dw/hqchart)](https://img.shields.io/npm/dw/hqchart)
 
 HQChart是第1个基于国内传统PC股票客户端软件(C++)移植到js/py平台的一个项目, 包含**K线图图形库**及**麦语法(分析家语法)指标执行器**.  <br>
-js版本的K线图形库支持原生js,VUE, uniapp,小程序. <br>
-麦语法(分析家语法)指标执行器支持js, nodejs, py. 其中py的**FastHQChart**版本是由c++底层开发,通过cpython来对接py, 能高效的完成指标执行. 可以应用于回测, 选股等.<br>
+**支持平台**:js, vue2.0, vue3.0, uniapp,小程序 <br>
+**支持品种**:支持股票，期货， 数字货币，外汇等和K线相关的品种。<br>
+**麦语法指标计算引擎**(分析家语法)指标执行器支持js, nodejs, py, c#，c++. <br>
+
 
 源码地址:[https://github.com/jones2000/HQChart](https://github.com/jones2000/HQChart)<br>
 镜像地址:[https://gitee.com/jones2000/HQChart](https://gitee.com/jones2000/HQChart)<br>
 
 如果你觉得我们的行情模块对你有帮助， 请给我们点下star. (●ˇ∀ˇ●) <br>
+
+py版本的麦语法指标计算引擎，已单独迁移到[https://github.com/jones2000/hqchartPy2](https://github.com/jones2000/hqchartPy2),
+可以通过pip install hqchart来安装， 支持windows,和linux. 这个版本是用c++开发的，通过cpython来对接py，能高效的完成指标执行. 可以应用于回测, 选股等批量指标计算中。c++部分不开源，只开放了编译好的动态库，在py上直接调用就可以<br>
 
 **教程列表和demo效果图在下面,下拉页面就可以看到!!!!!!!!!!!!**
 
@@ -102,7 +107,7 @@ React 例子:[demo-react.md](/教程/demo-react.md) <br>
 # 2. 走势图
 * 支持指标 <br>
 * 支持股票叠加<br>
-* 支持沪深和港股,国内期货(开发中)<br>
+* 支持沪深和港股,国内期货等<br>
 * 分钟数据显示 <br>
 * 支持多日分钟数据显示<br>
 * 支持A股集合竞价显示/隐藏 (2019-7-12 新加功能)  <br>
@@ -196,6 +201,8 @@ React 例子:[demo-react.md](/教程/demo-react.md) <br>
 61. [HQChart使用教程69-获取指定股票的K线数据](https://blog.csdn.net/jones2000/article/details/111736960)<br>
 62. [HQChart使用教程70-通达信指标翻译](https://blog.csdn.net/jones2000/article/details/112998609)<br>
 63. [HQChart使用教程71-如何自定义Y轴刻度线](https://blog.csdn.net/jones2000/article/details/113666565)<br>
+64. [HQChart使用教程72-画图工具波浪尺刻度配置](https://blog.csdn.net/jones2000/article/details/113923817)<br>
+65. [HQChart使用教程73-使用Vue3.0创建HQChart图形](https://blog.csdn.net/jones2000/article/details/114954091)<br>
 
 ## 小程序教程
 1. [HQChart小程序教程1-如何快速的创建一个K线图](https://developers.weixin.qq.com/community/develop/article/doc/0006c451ac81589915b89d1c55bc13) <br>
@@ -248,6 +255,7 @@ React 例子:[demo-react.md](/教程/demo-react.md) <br>
 24. [HQChart使用教程30-K线图如何对接第3方数据24-如何填充K线背景色](https://blog.csdn.net/jones2000/article/details/112342980)<br>
 25. [HQChart使用教程30-K线图如何对接第3方数据25-指标脚本自定义变量](https://blog.csdn.net/jones2000/article/details/112755911)<br>
 26. [HQChart使用教程30-K线图如何对接第3方数据26-指标脚本自定义函数](https://blog.csdn.net/jones2000/article/details/112809781)<br>
+27. [HQChart使用教程30-K线图如何对接第3方数据27-如何在指标中渲染DOM元素](https://blog.csdn.net/jones2000/article/details/114006164)<br>
 
 
 ## 实战教程
@@ -272,6 +280,9 @@ React 例子:[demo-react.md](/教程/demo-react.md) <br>
 5. [HQChart实战教程15-火币网ws数据对接拖拽下载历史K线图](https://blog.csdn.net/jones2000/article/details/106205584)<br>
 6. [HQChart实战教程16-K线图风格配色篇-仿火币网H5配色](https://blog.csdn.net/jones2000/article/details/106226272)<br>
 
+## 币安对接(源码收费)
+1. [HQChart实战教程36-数字货币安币对接-uniapp版本](https://blog.csdn.net/jones2000/article/details/114468807)<br>
+
 ## httpA股数据对接教程(付费文章)
 ### 日K线
 1. [HQChart实战教程29-A股日K线数据对接-Vue版本](https://blog.csdn.net/jones2000/article/details/113099783)<br>
@@ -283,6 +294,8 @@ React 例子:[demo-react.md](/教程/demo-react.md) <br>
 ### 分时图
 1. [HQChart实战教程33-A股分时图数据对接-Vue版本](https://blog.csdn.net/jones2000/article/details/113226866)<br>
 2. [HQChart实战教程35-A股分时图数据对接-uniapp版本](https://blog.csdn.net/jones2000/article/details/113777111)<br>
+### 后台指标
+1. [HQChart实战教程36-A股后台指标对接-uniapp版本](https://blog.csdn.net/jones2000/article/details/114991081)<br>
 
 ## 高级应用实战教程（付费文章）
 1. [HQChart实战教程19 - PC端分时图定制tooltip](https://blog.csdn.net/jones2000/article/details/108633991)<br>

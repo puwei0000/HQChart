@@ -1,6 +1,15 @@
 <template>
     <div id="app2" >
-        <p style="text-align:center">个股行情整体测试页面v1.0 代码地址: https://github.com/jones2000/HQChart</p>
+      <div class="demoPageTop">
+        <span>HQChart测试页面v1.0</span> 
+        <a href="https://github.com/jones2000/HQChart" target="_blank">代码地址: https://github.com/jones2000/HQChart</a>
+        <div class="changeColorBtns">
+          <button type="button" @click="OnChangeStyle('black')">黑色风格</button>
+          <button type="button" @click="OnChangeStyle('white')">白色风格</button>
+        </div>
+        
+      </div>
+        
         <!--
         <a v-on:click="OnChangeSymbol('002230.sz')">科大讯飞</a>
         <a v-on:click="OnChangeSymbol('600016.sh')">民生银行</a>
@@ -106,19 +115,42 @@ export default
             var r = window.location.search.substr(1).match(reg);
             if (r != null) return decodeURI(r[2]);
             return null;
+        },
+
+        OnChangeStyle(styleName)
+        {
+            this.$refs.stockfull.OnChangeStyle(styleName);
         }
     }
 }
 
 </script>
 
-<style>
+<style lang="less">
 * 
 {
     font: 14px/normal "Microsoft Yahei";
     color: #666;
     padding: 0;
     margin: 0;
+}
+
+.demoPageTop{
+  position: relative;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+
+  .changeColorBtns{
+    position: absolute;
+    top: 0;
+    right: 15px;
+    height: 100%;
+    width: 140px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 }
 
 .divstockfull

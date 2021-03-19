@@ -1,5 +1,5 @@
 <template>
-    <div class="stockkline" ref='stockkline'>
+    <div class="stockkline" ref='stockkline' :class='{blackStyle: isBlackStyle}'>
         <!-- 周期工具条  !-->
         <div class='periodbar' ref='divperiodbar'>
             <div class="preiod">
@@ -41,7 +41,7 @@
           
         </div>
         <div class="brushTool" v-if="DrawTool.IsShow">
-            <Stockdrawtool @CurrentIcon = "CurrentIcon" @IsShowBrushTool="isShowBrushTool" :topheight="topheight" :totalheight="totalheight"></Stockdrawtool>
+            <Stockdrawtool ref='stockdrawtool' @CurrentIcon = "CurrentIcon" @IsShowBrushTool="isShowBrushTool" :topheight="topheight" :totalheight="totalheight"></Stockdrawtool>
         </div>   
         <!-- 走势图 和 K线图  !-->
         <div class='divchart' :id='ID' ref='divchart' style="width:100%;height:100%">
@@ -130,8 +130,8 @@ DefaultData.GetMinuteOption=function()
         Frame: //子框架设置,刻度小数位数设置
         [
             { SplitCount: 5, StringFormat: 0 },
-            { SplitCount: 3, StringFormat: 0 },
-            { SplitCount: 3, StringFormat: 0 }
+            { SplitCount: 5, StringFormat: 0 },
+            { SplitCount: 5, StringFormat: 0 }
         ],
     };
 
@@ -152,12 +152,14 @@ DefaultData.GetKLineOption=function()
         IsAutoUpdate: true, //是自动更新数据
         IsShowRightMenu: false, //右键菜单
 
+        CorssCursorInfo:{ DateFormatType:2 },
+
         KLine: 
         {
             DragMode: 1, //拖拽模式 0 禁止拖拽 1 数据拖拽 2 区间选择
             Right: 1, //复权 0 不复权 1 前复权 2 后复权
             Period: 0, //周期 0 日线 1 周线 2 月线 3 年线
-            MaxReqeustDataCount: 1000, //日线数据最近1000天
+            MaxReqeustDataCount: 3000, //日线数据最近1000天
             MaxRequestMinuteDayCount: 15,    //分钟数据最近15天
             PageSize: 50, //一屏显示多少数据 
             IsShowTooltip: true, //是否显示K线提示信息
@@ -180,10 +182,10 @@ DefaultData.GetKLineOption=function()
 
         Frame: //子框架设置
         [
-            { SplitCount: 3, StringFormat: 0, IsShowLeftText: false },
-            { SplitCount: 3, StringFormat: 0, IsShowLeftText: false },
-            { SplitCount: 3, StringFormat: 0, IsShowLeftText: false },
-            { SplitCount: 3, StringFormat: 0, IsShowLeftText: false }
+            { SplitCount: 5, StringFormat: 0, IsShowLeftText: false },
+            { SplitCount: 5, StringFormat: 0, IsShowLeftText: false ,EnableRemoveZero:true, MinYDistance:20 },
+            { SplitCount: 5, StringFormat: 0, IsShowLeftText: false ,EnableRemoveZero:true},
+            { SplitCount: 5, StringFormat: 0, IsShowLeftText: false ,EnableRemoveZero:true}
         ]
     };
 
@@ -199,6 +201,8 @@ DefaultData.GetPeriodData=function(name)
                     ["周线",{Value:1,KLineShow:true,MinuteShow:false}],
                     ["月线",{Value:2,KLineShow:true,MinuteShow:false}],
                     ["年线",{Value:3,KLineShow:true,MinuteShow:false}],
+                    ["双周",{Value:21,KLineShow:true,MinuteShow:false}],
+                    ["半年",{Value:22,KLineShow:true,MinuteShow:false}],
                     ["1分钟",{Value:4,KLineShow:true,MinuteShow:false}],
                     ["5分钟",{Value:5,KLineShow:true,MinuteShow:false}],
                     ["15分钟",{Value:6,KLineShow:true,MinuteShow:false}],
@@ -216,7 +220,8 @@ DefaultData.GetPeriodMenu=function()
     [
         '分时', '五日', 
         '日线', '周线', '月线', '年线', 
-        '1分钟', '5分钟', '15分钟', '30分钟', '60分钟'
+        '1分钟', '5分钟', '15分钟', '30分钟', '60分钟',
+        "双周",  "半年"
     ];
 
     return data;
@@ -462,11 +467,22 @@ export default
                 Timer:null  //定时器
             },
             MoveInterval:null,
-            IsShowBeforeData:true  //显示
+            IsShowBeforeData:true,  //显示
+
+            ColorStyle:new Map(),   //风格
+            isBlackStyle: false
         }
 
         return data;
     },
+
+    // watch: {
+    //   isBlackStyle: function(newValue){
+    //     if(newValue && this.DrawTool.IsShow){
+          
+    //     }
+    //   }
+    // },
 
     created:function()
     {
@@ -504,6 +520,12 @@ export default
         if (this.KLineOption) this.SetDefaultKLineOption(this.KLineOption);
         if (this.MinuteOption) this.SetDefaultMinuteOption(this.MinuteOption);
         if (this.TradeInfoTabWidth>0) this.TradeInfoTab.Width=this.TradeInfoTabWidth;
+
+        //保存配色
+        var resource=JSCommon.JSChart.GetResource();
+        this.ColorStyle.set("white",JSON.parse(JSON.stringify(resource)));
+        resource=JSCommon.HQChartStyle.GetStyleConfig(JSCommon.STYLE_TYPE_ID.BLACK_ID);
+        this.ColorStyle.set("black",JSON.parse(JSON.stringify(resource)));
     },
 
     mounted:function()
@@ -773,6 +795,28 @@ export default
 
             this.UpateMenuStatus();
             
+        },
+
+        //风格切换
+        ChangeStyle(styleName)
+        {   
+            this.isBlackStyle = 'black' === styleName;
+            var style=this.ColorStyle.get(styleName);
+            if (!style) return;
+
+            JSCommon.JSChart.SetStyle(style);  //设置全局颜色配置
+            this.$refs.kline.style.backgroundColor=style.BGColor;   //修改div背景色
+            if (this.KLine.JSChart) this.KLine.JSChart.ReloadResource({ Resource:null, Draw:true , Update:true });  //动态更新颜色配置
+            if (this.Minute.JSChart) this.Minute.JSChart.ReloadResource({ Resource:null, Draw:true , Update:true });  //动态更新颜色配置
+
+            //K线 div背景色
+            var clrBG="rgb(255,255,255)";
+            if (styleName=="black") clrBG="rgb(0,0,0)";
+            var divMinute=this.$refs.minute;
+            divMinute.style.backgroundColor=clrBG;
+
+            var divKline=this.$refs.kline;
+            divKline.style.backgroundColor=clrBG;
         },
 
         //更新菜单 
@@ -1201,6 +1245,11 @@ export default
                             //获取到工具的名称：线段
                             //this.KLine.JSChart.JSChartContainer.CreateChartDrawPicture('名称')
                             this.DrawTool.IsShow = true;
+                            this.$nextTick(() => {
+                              var styleName = this.isBlackStyle ? 'black': 'white';
+                              this.$refs.stockdrawtool.ChangeStyle(styleName);
+                            });
+                            
                         }
                         break;
                 }
@@ -1628,6 +1677,81 @@ a
     .iconfont {
         font-size: 13px;
     }
+}
+
+.blackStyle{
+  width: 100%;
+  .periodbar{
+    background-color: #2c3133;
+    .item{
+      color: #dde2e7;
+    }
+    .item.active{
+        color: #ffffff;
+        background-color: #ff8800;
+    }
+  }
+  .chartbar{
+    border-bottom: 1px solid #3d4042;
+    background-color: #191d1e;
+
+    .menuWrap .item {
+      .menuTwo{
+        border: 1px solid #191d20;
+        border-top: none;
+        background-color: #2f3438;
+
+        >li{
+          color: #dde2e7;
+          &:hover{
+            color: #ff8800;
+          }
+        }
+      }
+
+      .menuOne{
+        &:hover{
+          border-color: #191d20;
+          &>span,
+          &>.iconfont{
+            color: #ff8800;
+          }
+        }
+
+        &.light:hover,
+        &.light{
+          background-color: #2f3438;
+          border-color: #191d20;
+        }
+
+        &.light>span,
+        &.light>.iconfont{
+          color: #ff8800;
+        }
+
+        >span,
+        >.iconfont{
+          color: #dde2e7;
+        }
+      }
+    }
+    
+
+    
+  }
+
+  .indexbar{
+    background-color: #191d1e;
+
+    span{
+      color: #9ca7b3;
+
+      &.active{
+        color: #ff8800;
+        background-color: transparent;
+      }
+    }
+  }
 }
 
 </style>

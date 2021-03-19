@@ -36,4 +36,10 @@ export default {
     HQChartStyle:HQChartStyle,              //预定义全局的配色 黑
 
     JSConsole:JSConsole,    //日志输出
+
+    KLineTooltipPaint:KLineTooltipPaint,    //K线tooltip
+    MinuteTooltipPaint:MinuteTooltipPaint,  //走势图tooltip
+
+    ChartDrawTwoPointDemo:ChartDrawTwoPointDemo,        //画图工具2个点例子
+    ChartDrawThreePointDemo:ChartDrawThreePointDemo,    //画图工具3个点例子
 }

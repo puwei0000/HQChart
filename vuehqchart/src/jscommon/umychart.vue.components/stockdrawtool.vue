@@ -3,7 +3,7 @@
   !-->
 
 <template>
-    <div class="draw-box" v-if="IsShowBrushTool" id="toolBox">
+    <div class="draw-box" v-if="IsShowBrushTool" id="toolBox" :class='{blackStyle: isBlackStyle}'>
         <ul>
         <!-- 关闭 -->
         <li class="closeBtn">
@@ -15,7 +15,7 @@
             @mouseover="ToolBoxMove"
             ></span>
             <svg class="symbolIkcon icon-close" aria-hidden="true" @click="CloseBtn">
-            <use xlink:href="#icon-guanbi"></use>
+              <use xlink:href="#icon-guanbi"></use>
             </svg>
         </li>
         <!-- 图标 -->
@@ -98,7 +98,9 @@
             { name: "平行线", icon: "#icon-draw_parallel_lines" },
             { name: "平行通道", icon: "#icon-draw_parallelchannel" },
             { name: "价格通道线", icon: "#icon-draw_pricechannel" },
-            { name: "M头W底", icon: "#icon-draw_wavemw" }
+            { name: "M头W底", icon: "#icon-draw_wavemw" },
+            { name: "波浪尺", icon: "#icon-waveruler" },
+            { name: "箱型线", icon: "#icon-draw_box" }
         ],
         ToolList2: [
             { name: "圆弧线", icon: "#icon-draw_arc" },
@@ -145,7 +147,8 @@
             tip: "向左箭头"
             },
             { name: "全部删除", icon: "#icon-recycle_bin", tip: "全部删除" }
-        ]
+        ],
+        isBlackStyle: false
         };
     },
     props: {
@@ -156,7 +159,12 @@
         this.ToolBoxHandle();
     },
     methods: {
-        ToolBoxHandle() {
+      //风格切换
+      ChangeStyle(styleName){
+        // debugger
+        this.isBlackStyle = 'black' === styleName;
+      },
+      ToolBoxHandle() {
         this.DisabledTip = true;
         ///用以获取滚动条的距离
         let getStyle = function(obj, name) {
@@ -256,7 +264,7 @@
 
 <style lang="less" type="text/scss">
     #toolBox {
-    width: 115px;
+    width: 145px;
     height: 650px;
     border: 1px solid #dadada;
     position: absolute;
@@ -298,12 +306,30 @@
         }
         }
         .line-style {
-        width: 87px;
-        height: 1px;
-        display: block;
-        background: #e3e7ea;
-        margin: 10px 14px;
+          width: 100px;
+          height: 1px;
+          display: block;
+          background: #e3e7ea;
+          margin: 10px calc(50% - 50px);
+          /* margin-left: ; */
         }
     }
+    }
+
+    #toolBox.blackStyle{
+      background-color: #2f363b;
+	    border: solid 1px #181c1f;
+
+      .closeBtn .move-area{
+        background: #2f363b;  
+      }
+      .closeBtn .icon-close{
+        color: #9ca7b3;
+      }
+
+      .line-style{
+        background: #202427;
+      }
+      
     }
 </style>

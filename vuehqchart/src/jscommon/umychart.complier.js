@@ -30,9 +30,62 @@ var g_JSComplierResource=
     {  
         Family:'iconfont', 
         Data:new Map([
-            [1, { Text:'\ue625', Color:'rgb(255,106,106)'}],    //向上箭头
-            [2, { Text:'\ue68b', Color:'rgb(46,139,87)'}],      //向下箭头
-            [11,{ Text:'\ue624', Color:'rgb(245,159,40)'}],     //点赞
+            [1, { Text:'\ue660', Color:'rgb(243,28,15)'}],    //向上箭头
+            [2, { Text:'\ue661', Color:'rgb(87,247,41)'}],    //向下箭头
+            [3, { Text:'\ue662', Color:'rgb(237,153,0)'}],
+            [4, { Text:'\ue663', Color:'rgb(237,153,0)'}],  
+            [5, { Text:'\ue664', Color:'rgb(237,153,0)'}],  
+            [6, { Text:'\ue665', Color:'rgb(140,57,208)'}],  
+            [7, { Text:'\ue666', Color:'rgb(246,135,37)'}],  
+            [8, { Text:'\ue667', Color:'rgb(85,231,56)'}],  
+            [9, { Text:'\ue668', Color:'rgb(227,61,41)'}], 
+
+            [10, { Text:'\ue669', Color:'rgb(216,78,48)'}], 
+            [11, { Text:'\ue66a', Color:'rgb(249,187,0)'}],    //点赞
+            [12, { Text:'\ue66b', Color:'rgb(249,187,0)'}], 
+            [13, { Text:'\ue66c', Color:'rgb(216,42,0)'}], 
+            [14, { Text:'\ue66d', Color:'rgb(58,90,236)'}], 
+            [15, { Text:'\ue66e', Color:'rgb(227,149,0)'}], 
+            [16, { Text:'\ue66f', Color:'rgb(208,82,78)'}], 
+            [17, { Text:'\ue670', Color:'rgb(234,114,26)'}], 
+            [18, { Text:'\ue671', Color:'rgb(116,25,255)'}], 
+            [19, { Text:'\ue672', Color:'rgb(102,9,11)'}], 
+
+            [20, { Text:'\ue673', Color:'rgb(127,125,137)'}],
+            [21, { Text:'\ue674', Color:'rgb(110,188,255)'}],
+            [22, { Text:'\ue675', Color:'rgb(238,79,51)'}],
+            [23, { Text:'\ue676', Color:'rgb(244,71,0)'}],
+            [24, { Text:'\ue677', Color:'rgb(102,183,248)'}],
+            [25, { Text:'\ue678', Color:'rgb(234,88,231)'}],
+            [26, { Text:'\ue679', Color:'rgb(242,171,0)'}],
+            [27, { Text:'\ue67a', Color:'rgb(87,247,168)'}],
+            [28, { Text:'\ue67b', Color:'rgb(97,204,113)'}],
+            [29, { Text:'\ue67c', Color:'rgb(84,115,193)'}],
+
+            [30, { Text:'\ue67d', Color:'rgb(141,51,255)'}],
+            [31, { Text:'\ue67e', Color:'rgb(200,126,24)'}],
+            [32, { Text:'\ue67f', Color:'rgb(195,41,32)'}],
+            [33, { Text:'\ue68f', Color:'rgb(215,85,194)'}],
+            [34, { Text:'\ue690', Color:'rgb(250,222,105)'}],
+            [35, { Text:'\ue691', Color:'rgb(112,249,224)'}],
+            [36, { Text:'\ue692', Color:'rgb(217,107,98)'}],
+            [37, { Text:'\ue693', Color:'rgb(114,231,17)'}],
+            [38, { Text:'\ue694', Color:'rgb(238,31,25)'}],
+            [39, { Text:'\ue695', Color:'rgb(92,247,113)'}],
+
+            [40, { Text:'\ue696', Color:'rgb(175,175,175)'}],
+            [41, { Text:'\ue697', Color:'rgb(252,228,23)'}],
+            [42, { Text:'\ue698', Color:'rgb(88,195,235)'}],
+            [43, { Text:'\ue699', Color:'rgb(55,74,94)'}],
+            [44, { Text:'\ue69a', Color:'rgb(248,175,33)'}],
+            [45, { Text:'\ue69b', Color:'rgb(194,180,112)'}],
+            [46, { Text:'\ue69c', Color:'rgb(50,153,28)'}],
+            [47, { Text:'\ue69d', Color:'rgb(17,65,152)'}],
+            [48, { Text:'\ue69e', Color:'rgb(194,55,26)'}],
+            [49, { Text:'\ue69f', Color:'rgb(243,0,0)'}],
+
+            /*
+            [11,{ Text:'\ue624', Color:'rgb(245,159,40)'}],     
             [12,{ Text:'\ue600', Color:'rgb(245,159,40)'}],
             [13,{Text:'\ue70f',Color:'rgb(209,37,35)'}, ],      //B
             [14,{Text:'\ue64c',Color:'rgb(127,209,59)'} ],      //S
@@ -42,6 +95,7 @@ var g_JSComplierResource=
             [38,{Text:'\ue68d',Color:'rgb(238,44,44)'} ],       //▲
             [39,{Text:'\ue68e',Color:'rgb(0,139,69)'} ],        //▼
             [46,{Text:'\ue64d',Color:'rgb(51,51,51)'} ],        //message
+            */
         ])
     },
 
@@ -276,10 +330,29 @@ JSComplierHelper.GetPeriodInfo=function(obj)
         {Name:'MIN60', Period:8, Order:5},
 
         {Name:'DAY',    Period:0, Order:1000},
-        {Name:'WEEK',   Period:1, Order:1001},
-        {Name:'MONTH',  Period:2, Order:1002},
-        {Name:"SEASON", Period:9, Order:1003},
-        {Name:"YEAR",   Period:3, Order:1004}
+        {Name:'MULTIDAY',    Period:40002, Order:1002},
+        {Name:'DAY2',    Period:40002, Order:1002},
+        {Name:'DAY3',    Period:40003, Order:1003},
+        {Name:'DAY4',    Period:40004, Order:1004},
+        {Name:'DAY5',    Period:40005, Order:1005},
+        {Name:'WEEK',   Period:1, Order:1005},
+
+        {Name:'DAY6',    Period:40006, Order:1006},
+        {Name:'DAY7',    Period:40007, Order:1007},
+        {Name:'DAY8',    Period:40008, Order:1008},
+        {Name:'DAY9',    Period:40009, Order:1009},
+        {Name:'DAY10',   Period:40009, Order:1010},
+        {Name:"WEEK2",   Period:21,    Order:1010},
+
+        {Name:'DAY11',    Period:40011, Order:1011},
+        {Name:'DAY12',    Period:40012, Order:1012},
+        {Name:'DAY13',    Period:40013, Order:1013},
+        {Name:'DAY14',    Period:40014, Order:1014},
+
+        {Name:'MONTH',  Period:2, Order:1030},
+        {Name:"SEASON", Period:9, Order:1090},
+        {Name:"HALFYEAR", Period:22, Order:1180},
+        {Name:"YEAR",   Period:3, Order:1365}
     ];
 
     if (obj.Name)
@@ -1036,7 +1109,12 @@ function Node(ErrorHandler)
                     this.ThrowUnexpectedToken(token,errorMessage);
                 }
 
-                const VAR_PERIOD_NAME=["MIN1","MIN5","MIN15","MIN30","MIN60","DAY","WEEK","MONTH","SEASON","YEAR"];
+                const VAR_PERIOD_NAME=
+                [
+                    "MIN1","MIN5","MIN15","MIN30","MIN60","DAY","WEEK","MONTH","SEASON","YEAR","HALFYEAR","WEEK2",
+                    "MULTIDAY","DAY2","DAY3","DAY4","DAY5","DAY6","DAY7","DAY8","DAY9","DAY10",
+                    "DAY11","DAY12","DAY13","DAY14","DAY15"
+                ];
                 if (VAR_PERIOD_NAME.indexOf(aryWrods[1])<0)
                 {
                     var errorMessage=`${varName}, 跨周期语法错误， 周期只支持'MIN1,MIN5,MIN15,MIN30,MIN60,DAY,WEEK,MONTH,SEASON,YEAR'`;
@@ -8228,37 +8306,70 @@ function JSDraw(errorHandler,symbolData)
         let result={DrawData:drawData, DrawType:'STICKLINE',Width:width, Type:type};
         if (result.Width<0) result.Width=3;    //<0的宽度 使用K线宽度
 
-        if(condition.length<=0) return result;
-
         var IsNumber=typeof(data)=="number";
         var IsNumber2=typeof(data2)=="number";
-   
-        for(var i in condition)
+
+        if (Array.isArray(condition))   //数组
         {
-            drawData[i]=null;
-
-            if (isNaN(condition[i]) || !condition[i]) continue;
-
-            if (IsNumber && IsNumber2)
+            if(condition.length<=0) return result;
+            for(var i in condition)
             {
-                drawData[i]={Value:data,Value2:data2};
-            }
-            else if (IsNumber && !IsNumber2)
-            {
-                if (isNaN(data2[i])) continue;
-                drawData[i]={Value:data,Value2:data2[i]};
-            }
-            else if (!IsNumber && IsNumber2)
-            {
-                if (isNaN(data[i])) continue;
-                drawData[i]={Value:data[i],Value2:data2};
-            }
-            else
-            {
-                if (isNaN(data[i]) || isNaN(data2[i])) continue;
-                drawData[i]={Value:data[i],Value2:data2[i]};
+                drawData[i]=null;
+    
+                if (isNaN(condition[i]) || !condition[i]) continue;
+    
+                if (IsNumber && IsNumber2)
+                {
+                    drawData[i]={Value:data,Value2:data2};
+                }
+                else if (IsNumber && !IsNumber2)
+                {
+                    if (isNaN(data2[i])) continue;
+                    drawData[i]={Value:data,Value2:data2[i]};
+                }
+                else if (!IsNumber && IsNumber2)
+                {
+                    if (isNaN(data[i])) continue;
+                    drawData[i]={Value:data[i],Value2:data2};
+                }
+                else
+                {
+                    if (isNaN(data[i]) || isNaN(data2[i])) continue;
+                    drawData[i]={Value:data[i],Value2:data2[i]};
+                }
             }
         }
+        else    //单值
+        {
+            if(!condition) return result;
+
+            for(var i=0;i<this.SymbolData.Data.Data.length;++i) //以K线长度为数据长度
+            {
+                drawData[i]=null;
+
+                if (IsNumber && IsNumber2)
+                {
+                    drawData[i]={Value:data,Value2:data2};
+                }
+                else if (IsNumber && !IsNumber2)
+                {
+                    if (!IFrameSplitOperator.IsNumber(data2[i])) continue;
+                    drawData[i]={Value:data,Value2:data2[i]};
+                }
+                else if (!IsNumber && IsNumber2)
+                {
+                    if (!IFrameSplitOperator.IsNumber(data[i])) continue;
+                    drawData[i]={Value:data[i],Value2:data2};
+                }
+                else
+                {
+                    if (!IFrameSplitOperator.IsNumber(data[i]) || !IFrameSplitOperator.IsNumber(data2[i])) continue;
+                    drawData[i]={Value:data[i],Value2:data2[i]};
+                }
+            }
+        }
+   
+        
 
         return result;
     }
@@ -13026,8 +13137,12 @@ function JSSymbolData(ast,option,jsExecute)
         }
 
         const PERIOD_MAP=new Map([
-            ["DAY",0 ], ["WEEK", 1 ], ["MONTH",2 ], ["SEASON",9 ], ["YEAR", 3],
-            ["MIN1", 4],["MIN5", 5 ],["MIN15", 6 ],["MIN30",7 ], ["MIN60", 8 ]
+            ["DAY",0 ], ["WEEK", 1 ], ["MONTH",2 ], ["SEASON",9 ], ["YEAR", 3], ["HALFYEAR",22], ["WEEK2",21],
+            ["MIN1", 4], ["MIN5", 5 ], ["MIN15", 6 ], ["MIN30",7 ], ["MIN60", 8 ],
+
+            ["DAY2", 40002],["MULTIDAY",40002],["DAY3", 40003],["DAY4", 40004],["DAY5",40005],
+            ["DAY6", 40006],["DAY7", 40007],["DAY8", 40008],["DAY9", 40009],["DAY10",40010],
+            ["DAY11", 40011],["DAY12", 40012],["DAY13", 40013],["DAY14", 40014],["DAY15", 40015],
         ]);
 
         if (result.Period)
@@ -13715,6 +13830,23 @@ function JSSymbolData(ast,option,jsExecute)
         return result;
     }
 
+    this.DAY=function()
+    {
+        var result=[];
+        if (!this.Data || !this.Data.Data || !this.Data.Data.length) return result;
+
+        for(let i in this.Data.Data)
+        {
+            var item=this.Data.Data[i];
+            if (this.IsNumber(item.Date))
+                result[i]=parseInt(item.Date%100);
+            else
+                result[i]=null;
+        }
+
+        return result;
+    }
+
     this.MONTH=function()
     {
         var result=[];
@@ -14131,7 +14263,7 @@ function JSExecute(ast,option)
         ["ISEQUAL",null], ["ISUP",null],["ISDOWN"], //ISUP=收阳 ISEQUAL=平盘 ISDOWN=收阴
 
         //日期类
-        ['DATE',null],['YEAR',null],['MONTH',null],['PERIOD', null],['WEEK',null],["TIME",null],
+        ['DATE',null],['YEAR',null],['MONTH',null],['PERIOD', null],['WEEK',null],["TIME",null],["DAY",null],
 
         //大盘数据
         ['INDEXA',null],['INDEXC',null],['INDEXH',null],['INDEXL',null],['INDEXO',null],['INDEXV',null],
@@ -14366,6 +14498,8 @@ function JSExecute(ast,option)
                 return this.SymbolData.MONTH();
             case 'WEEK':
                 return this.SymbolData.WEEK();
+            case "DAY":
+                return this.SymbolData.DAY();
             case 'PERIOD':
                 return this.SymbolData.PERIOD();
             case 'FROMOPEN':
@@ -15979,7 +16113,7 @@ function JSExplainer(ast,option)
         const mapPeriodName=new Map(
         [
             ["MIN1","1分钟"], ["MIN5", "5分钟"], ["MIN15", "15分钟"], ["MIN30","30分钟"],["MIN60","60分钟"],
-            ["DAY","日"],["WEEK","周"], ["MONTH", "月"], ['SEASON',"季"], ["YEAR", "年"]
+            ["DAY","日"],["WEEK","周"], ["MONTH", "月"], ['SEASON',"季"], ["YEAR", "年"],["WEEK2","双周"], ["HALFYEAR", "半年"]
         ]);
 
         var dataName=valueName;
@@ -17236,6 +17370,20 @@ function ScriptIndex(name,script,args,option)
         hqChart.ChartPaint.push(chart);
     }
 
+    this.CreateMulitHtmlDom=function(hqChart,windowIndex,varItem,i)
+    {
+        let chart=new ChartMultiHtmlDom();
+        chart.Canvas=hqChart.Canvas;
+        chart.Name=varItem.Name;
+        chart.ChartBorder=hqChart.Frame.SubFrame[windowIndex].Frame.ChartBorder;
+        chart.ChartFrame=hqChart.Frame.SubFrame[windowIndex].Frame;
+
+        chart.Data=hqChart.ChartPaint[0].Data;//绑定K线
+        chart.Texts=varItem.Draw.DrawData;
+        chart.DrawCallback= varItem.Draw.Callback;
+        hqChart.ChartPaint.push(chart);
+    }
+
     this.CreateColorKLine=function(hqChart,windowIndex,varItem,i)
     {
         let chart=new ChartColorKline();
@@ -17477,6 +17625,9 @@ function ScriptIndex(name,script,args,option)
                     case 'MULTI_SVGICON':
                         this.CreateMultiSVGIcon(hqChart,windowIndex,item,i);
                         break;
+                    case "MULTI_HTMLDOM":
+                        this.CreateMulitHtmlDom(hqChart,windowIndex,item,i);
+                        break;
                     case "COLOR_KLINE":
                         this.CreateColorKLine(hqChart,windowIndex,item,i);
                         break;
@@ -17715,6 +17866,9 @@ function OverlayScriptIndex(name,script,args,option)
                         break;
                     case 'MULTI_SVGICON':
                         this.CreateMultiSVGIcon(hqChart,windowIndex,item,i);
+                        break;
+                    case "MULTI_HTMLDOM":
+                        this.CreateMulitHtmlDom(hqChart,windowIndex,item,i);
                         break;
                 }
             }
@@ -18292,6 +18446,23 @@ function OverlayScriptIndex(name,script,args,option)
         chart.Data=hqChart.ChartPaint[0].Data;//绑定K线
         chart.Family=varItem.Draw.DrawData.Family;
         chart.Icon= varItem.Draw.DrawData.Icon;
+        frame.ChartPaint.push(chart);
+    }
+
+    this.CreateMulitHtmlDom=function(hqChart,windowIndex,varItem,i)
+    {
+        var overlayIndex=this.OverlayIndex;
+        var frame=overlayIndex.Frame;
+        let chart=new ChartMultiHtmlDom();
+        chart.Canvas=hqChart.Canvas;
+        chart.Name=varItem.Name;
+        chart.ChartBorder=frame.Frame.ChartBorder;
+        chart.ChartFrame=frame.Frame;
+        chart.Identify=overlayIndex.Identify;
+
+        chart.Data=hqChart.ChartPaint[0].Data;//绑定K线
+        chart.Texts=varItem.Draw.DrawData;
+        chart.DrawCallback= varItem.Draw.Callback;
         frame.ChartPaint.push(chart);
     }
 
@@ -19077,6 +19248,18 @@ function APIScriptIndex(name,script,args,option, isOverlay)
 
                     result.push(outVarItem);
                 }
+                else if (draw.DrawType=="MULTI_HTMLDOM")    //外部自己创建dom
+                {
+                    drawItem.Text=draw.Text;
+                    drawItem.Name=draw.Name;
+                    drawItem.DrawType=draw.DrawType;
+                    drawItem.Callback=draw.Callback;
+                    drawItem.DrawData=this.FittingMultiText(draw.DrawData,date,time,hqChart);
+                    this.GetKLineData(drawItem.DrawData, hqChart);
+                    outVarItem.Draw=drawItem;
+
+                    result.push(outVarItem);
+                }
                 else if (draw.DrawType=="COLOR_KLINE")
                 {
                     drawItem.Text=draw.Text;
@@ -19126,6 +19309,7 @@ function APIScriptIndex(name,script,args,option, isOverlay)
         {
             var item=data[i];
             if (!IFrameSplitOperator.IsString(item.Value)) continue;
+            if (!IFrameSplitOperator.IsNumber(item.Index)) continue;
             if (item.Index<0 || item.Index>=kData.Data.length) continue;
             var valueName=item.Value.toUpperCase();
             var kItem=kData.Data[item.Index];
